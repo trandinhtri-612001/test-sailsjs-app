@@ -1,0 +1,43 @@
+
+
+@Host: http://localhost:1337/api/users
+
+### 
+get http://localhost:1336/api/users
+###
+get http://localhost:1336/api/users/1
+
+###
+POST http://localhost:1336/api/users
+Content-Type: application/json
+
+{
+"id":9, 
+"name":"lâm hoàng",
+"age":21,
+"address":"hà nội",
+"salary":40000,
+"email":"lam123@gmail.com",
+"password":"123456a@"
+
+
+}
+
+###
+put http://localhost:1336/api/users/4
+Content-Type: application/json
+
+{
+
+"name":"kha pham",
+"age":21,
+"address":"hà tĩnh",
+"salary":200,
+"email":"hang@gmail.com",
+"password":"123456a@"
+
+
+}
+
+###
+delete http://localhost:1336/api/users/2
