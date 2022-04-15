@@ -5,7 +5,7 @@
 ### 
 get http://localhost:1337/api/users
 ###
-get http://localhost:1337/api/users/3
+get http://localhost:1337/api/users/5
 
 ###
 POST http://localhost:1337/api/users
@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
 
-"name":"lee hoàng",
+"name":"phong kha 12345",
 "age":86,
 "address":"hà nội",
 "salary":40000,
@@ -25,7 +25,7 @@ Content-Type: application/json
 }
 
 ###
-put http://localhost:1337/api/users/3
+put http://localhost:1337/api/users/5
 Content-Type: application/json
 
 {
@@ -42,4 +42,4 @@ Content-Type: application/json
 }
 
 ###
-delete http://localhost:1337/api/users/7
+delete http://localhost:1337/api/users/5

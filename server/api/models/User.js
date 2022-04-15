@@ -7,16 +7,9 @@
 
 module.exports = {
 tableName:'users',
-primarykey:'id',
 conection:' default',
   attributes: {
-    id: { 
-      type: 'string',
-       required: true, 
-       'autoIncrement':true,
-       allowNull: false,
-       unique: true,
-      },
+ 
     name:{
       type: 'string',
      required: true,
@@ -27,7 +20,6 @@ conection:' default',
        required: true
       
        },
-
     address:{
       type:'string'
     },
@@ -38,13 +30,11 @@ conection:' default',
       type:'string',
       isEmail:true,
       allowNull: false
-
     },
     password:{
       type:'string',
       required: true,
       allowNull: false
-      
     },
     phone:{
       type:'string',
@@ -55,12 +45,12 @@ conection:' default',
   },
 
 
-  getFull: async ()=>{
+  getFullUser: async ()=>{
     const resUser = await User.find();
    return resUser;
   },
   getUser: async(_id)=>{
-   const resUser =  await User.findOne(_id);
+   const resUser =  await User.findOne({id:_id});
    return resUser;
   },
   creatUser:async (data)=>{

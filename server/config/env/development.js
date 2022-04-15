@@ -65,9 +65,11 @@
       // adapter: 'sails-postgresql',
       
       // url: 'postgresql://postgres:root@localhost:5432/test-app',
+
+      
       adapter: 'sails-postgresql',
-      url: 'postgres://postgres:1234@localhost:5432/test-app',
-      ssl: false,
+      url: 'postgresql://postgres:1234@localhost:5432/test-app',
+      ssl: false,  
     },
 
     // postgresql:{

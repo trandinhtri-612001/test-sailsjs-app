@@ -5,11 +5,13 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+const {  getFullUser,creatUser,getUser,updateUser,deleteUser } = require("../models/User");
+
 module.exports = {
 
 
    getUsers:async (req,res)=>{
-      const resUser = await getFull();
+      const resUser = await  getFullUser();
           if(!resUser){
               return res.status(400).JSON({success:false,messages:"user not found"});
           }
@@ -23,7 +25,7 @@ module.exports = {
        const _id= req.params.id;
       
        try {
-            const resUser = getUser(_id);
+            const resUser = await getUser(_id);
         
            if(!resUser){
                
@@ -31,7 +33,7 @@ module.exports = {
            }
            return res.json({success:true,messages:"find one user successFully",resUser});
        } catch (error) {
-        console.log(error.messages)
+        console.log(error)
         return res.json({success:false,messages:"internal server error "});
        }
 
@@ -54,7 +56,7 @@ module.exports = {
                 phone:phone,
 
             }
-            const resUser = await createUer(data);
+            const resUser = await creatUser(data);
              return res.json({success:true,messages:" create user success",resUser});   
        } catch (error) {
            console.log("looi "+error);
