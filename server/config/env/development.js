@@ -67,9 +67,14 @@
       // url: 'postgresql://postgres:root@localhost:5432/test-app',
       adapter: 'sails-postgresql',
       url: 'postgres://postgres:1234@localhost:5432/test-app',
-  
-      ssl: false
+      ssl: false,
     },
+
+    // postgresql:{
+    //   adapter: 'sails-postgresql',
+    //   url: 'postgres://postgres:1234@localhost:5432/test-app',
+    
+    // }
   
 
   },
@@ -339,7 +344,7 @@
   *                                                                         *
   ***************************************************************************/
   // port: 80,
-   port: 1336,
+  
 
 
   /**************************************************************************

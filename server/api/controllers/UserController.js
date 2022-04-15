@@ -6,88 +6,89 @@
  */
 
 module.exports = {
-   getUsers: async(req,res)=>{
-      
-      User.find((err,user)=>{
-          if(err){
+
+
+   getUsers:async (req,res)=>{
+      const resUser = await getFull();
+          if(!resUser){
               return res.status(400).JSON({success:false,messages:"user not found"});
           }
-          return res.ok({
+          return res.json({
               success:true,
-              user:usersssss
+              messages:"find full user successFully",
+              user:resUser
           })
-      })
-     
-
    },
    getUser:async(req,res)=>{
-       const id= req.params.id;
-       console.log(id)
+       const _id= req.params.id;
+      
        try {
-            const resuer = await User.findOne(req.params.id);
+            const resUser = getUser(_id);
         
-           if(!resuer){
+           if(!resUser){
+               
                res.json({success:false,messages:"user not found"});
            }
-           return res.json({success:true,messages:"find one user successFully",resuer});
+           return res.json({success:true,messages:"find one user successFully",resUser});
        } catch (error) {
-        return res.json({success:false,messages:"internal server errorsaasa "});
+        console.log(error.messages)
+        return res.json({success:false,messages:"internal server error "});
        }
 
    },
 
    createUer: async(req,res)=>{
-       const {id,name,age,address,salary,email,password}=req.body;
-       const resp = req.body;
-       if(!id||!name||!age||!address||!salary||!email||!password){
+       const {name,age,address,salary,email,password,phone}=req.body;
+     const newUser = req.body;
+       if(!name||!age||!address||!salary||!email||!password||!phone){
            return res.json({success:false,messages:"missing Information"})
        }
-       let str = `insert into users(id,name,age,address,salary,email,password)
-       values(${id},'${name}',${age},'${address}',${salary},'${email}','${password}')`;
-    
        try {
-            await User.query(str,function(err,user){
-                if(err){
-                    const errors = err.messages;
-                    return res.json({success:false,messages:"create  do user not success",errors});
-                }
-              return res.json({success:true,messages:" create user success",user});
-            });
+            let data = {
+                name:name,
+                age:age,
+                address:address,
+                salary:salary,
+                email:email,
+                password:password,
+                phone:phone,
+
+            }
+            const resUser = await createUer(data);
+             return res.json({success:true,messages:" create user success",resUser});   
        } catch (error) {
-           console.log(error.messages);
+           console.log("looi "+error);
         return res.json({success:false,messages:"internal server error"});
        }
    },
 
    updateUser: async(req,res)=>{
-    const {name,age,address,salary,email,password}=req.body;
+    const {name,age,address,salary,email,password,phone}=req.body;
     const _id = req.params.id;
 try {
-    const resuer = await User.findOne(req.params.id);
-    if(!resuer){
+    const resUer = await User.getUser(_id);
+    if(!resUer){
         res.json({success:false,messages:"user not found"});
     }
     const ojectUer = {
-        id:resuer.id,
-        name:name ||resuer.name,
-        age:age||resuer.age,
-        address:address||resuer.address,
-        salary:salary||resuer.salary,
-        email:email||resuer.email,
-        password:password||password
+        
+        name:name ||resUer.name,
+        age:age||resUer.age,
+        address:address||resUer.address,
+        salary:salary||resUer.salary,
+        email:email||resUer.email,
+        password:password||resUer.password,
+        phone:phone||resUer.phone
     }
-    const strQuery = `update users set name ='${ojectUer.name}',age ='${ojectUer.age}',
-    address ='${ojectUer.address}',salary ='${ojectUer.salary}',email ='${ojectUer.email}',password ='${ojectUer.password}'
-    where id=${_id};
-    `;
+    
+const resUser = await updateUser(_id,ojectUer)
+if(!resUer){
+    return res.json({success:false,messages:"update  do user not success",errors});
+      }
+       return res.json({success:true,messages:"updated user  success",user:resUser});
 
-    await User.query(strQuery,function(err,user){
-        if(err){
-            const errors = err.messages;
-            return res.json({success:false,messages:"update  do user not success",errors});
-        }
-        return res.json({success:true,messages:"updated user  success",user:ojectUer});
-    });
+  
+
 } catch (error) {
     console.log(error.messages);
     return res.json({success:false,messages:"internal server error"});
@@ -96,29 +97,17 @@ try {
 
    deleteUser:async(req,res)=>{
     const _id = req.params.id;
-
-    // try {
-    //     const user =  await User.destroy(_id);
-    //     if(!user){
-    //         return res.json({success:false,messages:"deleted user not success"});
-    //     }
-    //     return res.json({success:true,messages:"delete user  success",user:user});
-    // } catch (error) {
-    //     console.log(error)
-    //     return res.json({success:false,messages:"internal server error"});
-    // }
     try {
-        const resuer = await User.findOne(req.params.id);
-        if(!resuer){
+        const resUer = await getUser(_id);
+        if(!resUer){
            return  res.json({success:false,messages:"user not found"});
         }
-         const strQuery = `delete from users where id=${_id}`;
-          await User.query(strQuery,function(err,user){
-            if(err){
-                return res.json({success:false,messages:"deleted user not success"});
-            }
-            return res.json({success:true,messages:"updated user  success",user:resuer});
-        })
+         const user = await deleteUser(_id);
+         if(!user){
+            return res.json({success:false,messages:"deleted user not success"});
+         }
+         return res.json({success:true,messages:"delete user  success",user:user});
+      
     } catch (error) {
         console.log(error)
         return res.json({success:false,messages:"internal server error"});
