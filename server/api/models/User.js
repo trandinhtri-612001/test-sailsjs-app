@@ -17,7 +17,7 @@ conection:' default',
      },
     age:{ 
       type: 'number',
-       required: true
+      
       
        },
     address:{
@@ -54,9 +54,15 @@ conection:' default',
    return resUser;
   },
   creatUser:async (data)=>{
-    const resUser = await User.create(data);
+     await User.create(data).exec(function(err, resUser) {
+      if (err) {
+          return res.serverError(err);
+      }
     return resUser;
+     })
+    
   },
+
   updateUser:async(_id,data)=>{
     const resUser =  await User.updateOne({id:_id}).set(data);
     return resUser;

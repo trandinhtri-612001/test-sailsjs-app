@@ -1,40 +1,43 @@
 
 
-@Host: http://localhost:1337/api/users
+@Host =  http://localhost:1337/api/users
 
 ### 
-get http://localhost:1337/api/users
-###
-get http://localhost:1337/api/users/5
+get http://localhost:1337
 
 ###
-POST http://localhost:1337/api/users
+get {{Host}}
+###
+get {{Host}}/1
+
+###
+POST {{Host}}
 Content-Type: application/json
 
 {
 
-"name":"phong kha 12345",
+"name":"nguyên hữu đăng",
 "age":86,
 "address":"hà nội",
 "salary":40000,
 "email":"lam123@gmail.com",
-"password":"123456a@",
+"password":"hometour123rcA@",
 "phone":"6598453495"
 
 
 }
 
 ###
-put http://localhost:1337/api/users/5
+put {{Host}}/25
 Content-Type: application/json
 
 {
 
-"name":"nguyen yen",
-"age":34,
-"address":"hà nội",
-"salary":40000,
-"email":"hoang23@gmail.com",
+"name":"nguyen hữu bảo",
+"age":17,
+"address":"hà tĩnh",
+"salary":1000,
+"email":"baothptdl123@gmail.com",
 "password":"123456a@",
 "phone":"1234567"
 
@@ -42,4 +45,4 @@ Content-Type: application/json
 }
 
 ###
-delete http://localhost:1337/api/users/5
+delete {{Host}}/23

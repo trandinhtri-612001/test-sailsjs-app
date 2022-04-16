@@ -6,6 +6,7 @@
  */
 
 const {  getFullUser,creatUser,getUser,updateUser,deleteUser } = require("../models/User");
+const {hashUserPassword,ValidateService} = require("../helpers/user")
 
 module.exports = {
 
@@ -42,22 +43,11 @@ module.exports = {
    createUer: async(req,res)=>{
        const {name,age,address,salary,email,password,phone}=req.body;
      const newUser = req.body;
-       if(!name||!age||!address||!salary||!email||!password||!phone){
-           return res.json({success:false,messages:"missing Information"})
-       }
+     ValidateService(req,res);
        try {
-            let data = {
-                name:name,
-                age:age,
-                address:address,
-                salary:salary,
-                email:email,
-                password:password,
-                phone:phone,
-
-            }
+         const data = req.newUser;
             const resUser = await creatUser(data);
-             return res.json({success:true,messages:" create user success",resUser});   
+             return res.json({success:true,messages:" create user success",resUser:resUser});   
        } catch (error) {
            console.log("looi "+error);
         return res.json({success:false,messages:"internal server error"});
@@ -67,6 +57,7 @@ module.exports = {
    updateUser: async(req,res)=>{
     const {name,age,address,salary,email,password,phone}=req.body;
     const _id = req.params.id;
+    ValidateService(req,res);
 try {
     const resUer = await User.getUser(_id);
     if(!resUer){
