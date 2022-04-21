@@ -12,7 +12,11 @@ module.exports = {
 
 
    getUsers:async (req,res)=>{
-      const resUser = await  getFullUser();
+   
+
+     try {
+           const resUser = await  getFullUser();
+     
           if(!resUser){
               return res.status(400).JSON({success:false,messages:"user not found"});
           }
@@ -21,13 +25,19 @@ module.exports = {
               messages:"find full user successFully",
               user:resUser
           })
+     } catch (error) {
+        console.log(error)
+        return res.json({success:false,messages:"internal server error "});
+     }
+    
    },
    getUser:async(req,res)=>{
+   
        const _id= req.params.id;
       
        try {
             const resUser = await getUser(_id);
-        
+            sails.socket.blast('get-userId',resUser);
            if(!resUser){
                
                res.json({success:false,messages:"user not found"});
@@ -41,6 +51,8 @@ module.exports = {
    },
 
    createUer: async(req,res)=>{
+      
+
        const {name,age,address,salary,email,password,phone}=req.body;
      const newUser = req.body;
      ValidateService(req,res);
@@ -49,17 +61,18 @@ module.exports = {
             const resUser = await creatUser(data);
              return res.json({success:true,messages:" create user success",resUser:resUser});   
        } catch (error) {
-           console.log("looi "+error);
+           console.log(error);
         return res.json({success:false,messages:"internal server error"});
        }
    },
 
    updateUser: async(req,res)=>{
+   
     const {name,age,address,salary,email,password,phone}=req.body;
     const _id = req.params.id;
     ValidateService(req,res);
 try {
-    const resUer = await User.getUser(_id);
+    const resUer = await getUser(_id);
     if(!resUer){
         res.json({success:false,messages:"user not found"});
     }
@@ -89,6 +102,7 @@ if(!resUer){
    },
 
    deleteUser:async(req,res)=>{
+    
     const _id = req.params.id;
     try {
         const resUer = await getUser(_id);
@@ -105,8 +119,23 @@ if(!resUer){
         console.log(error)
         return res.json({success:false,messages:"internal server error"});
     }
-  }
+  },
    
+//   testSocket: (req,res)=>{
+   
+//       if(!req.isSocket){
+//           return res.json({success:false, messages:"it not socket request"});
+
+//       }
+//       let data ="test-success";
+
+//       sails.socket.blast('test-socket',data)
+
+//       return res.json({id:sails.socket.getId(req),hello:"this it socket request"});
+
+//   },
+
+
 
 };
 

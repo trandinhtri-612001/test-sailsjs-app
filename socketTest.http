@@ -1,0 +1,8 @@
+
+
+
+@Host =  http://localhost:1337/socket/user 
+
+
+###
+get {{Host}}

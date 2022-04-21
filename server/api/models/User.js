@@ -4,6 +4,8 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
+ 'use strict';
+ const bcrypt = require('bcrypt');
 
 module.exports = {
 tableName:'users',
@@ -43,8 +45,42 @@ conection:' default',
     },
 
   },
+// hash password
+  //  hashUserPassword(values, next){
+  //   bcrypt.genSalt(10, (err, salt) => {
+  //     if (err) {
+  //         sails.log.error(err);
+  //         return next();
+  //     }
+
+  //     bcrypt.hash(values.password, salt, (err, hash) => {
+  //         if (err) {
+  //             sails.log.error(err);
+  //             return next();
+  //         }
+  //         values.encryptedPassword = hash; // Here is our encrypted password
+  //         return next();
+  //     });
+  // });
+  //  },
+   //verify user password
+   
+//   verifyPassword(password, userPassword) {
+
+//     return new Promise(function(resolve, reject) {
+//         bcrypt.compare(password, userPassword, (err, match) => {
+//             if (err) {
+//                 sails.log.error(err);
+//                 return reject("Something went wrong!");
+//             }
+//             if (match) return resolve();
+//             else return reject("Mismatch passwords");
+//         });
+//     });
+// },
 
 
+// work in data
   getFullUser: async ()=>{
     const resUser = await User.find();
    return resUser;

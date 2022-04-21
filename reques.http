@@ -8,7 +8,7 @@ get http://localhost:1337
 ###
 get {{Host}}
 ###
-get {{Host}}/1
+get {{Host}}/18
 
 ###
 POST {{Host}}
@@ -28,21 +28,21 @@ Content-Type: application/json
 }
 
 ###
-put {{Host}}/25
+put {{Host}}/20
 Content-Type: application/json
 
 {
 
-"name":"nguyen hữu bảo",
+"name":"nguyen hữu bảo ",
 "age":17,
 "address":"hà tĩnh",
 "salary":1000,
 "email":"baothptdl123@gmail.com",
-"password":"123456a@",
-"phone":"1234567"
+"password":"bao2022A@qưer",
+"phone":"0934894329"
 
 
 }
 
 ###
-delete {{Host}}/23
+delete {{Host}}/25
