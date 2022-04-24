@@ -40,7 +40,7 @@ module.exports = {
           const queue = "cart-service";
           
         
-           //  postQueue(connection,queue);
+            postQueue(connection,queue);
            // deleteQueue(connection,queue);   
    
            }else{

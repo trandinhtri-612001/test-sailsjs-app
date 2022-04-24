@@ -18,7 +18,7 @@
  * For more best practices and tips, see:
  * https://sailsjs.com/docs/concepts/deployment
  */
- const amqp = require("amqplib")
+ 
  module.exports = {
 
 
@@ -76,26 +76,6 @@
 
   },
 
-  connect:async()=>{
-    try {
-        const amqpServer = "amqp://localhost:5672";
-        
-        const connection = await amqp.connect(amqpServer)
-         const channel = await connection.createChannel();
-        if(channel){
-        console.log("connect rabbitmq successfully");
-       const queue = "cart-service";  
-
-        }else{
-           
-            console.log("connect rabbitmq do not success")
-        }
-      
-    }
-    catch(ex) {
-        console.error(ex)
-    }
-},
   
 
 
