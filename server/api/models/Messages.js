@@ -7,19 +7,19 @@
 
 module.exports = {
 
-  // connection:  'rabbitConnect' ,
-  // routingKey: [ 'stream', 'parentMessage' ],
-  // attributes: {
-  //   title: 'string',
-  //   body: 'string',
-  //   stream: {
-  //     model: 'stream'
-  //   },
-  //   parentMessage: {
-  //     model: 'message'
-  //   }
-   
-  // }
+primaryKey:'id',
+ 
+  attributes: {
+    id: { type: 'number',
+     autoIncrement: true,
+     
+    },
+    
+    title: 'string',
+    body: 'string',
+   createdAt: { type: 'number', autoCreatedAt: true },
+    updatedAt: { type: 'number', autoUpdatedAt: true },
+  }
 
 };
 

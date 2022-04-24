@@ -9,7 +9,7 @@
 
 module.exports = {
 tableName:'users',
-conection:' postGres',
+conection:' default',
   attributes: {
  
     name:{
@@ -43,6 +43,8 @@ conection:' postGres',
       required:true
 
     },
+    createdAt: { type: 'number', autoCreatedAt: true },
+    updatedAt: { type: 'number', autoUpdatedAt: true },
 
   },
 // hash password
