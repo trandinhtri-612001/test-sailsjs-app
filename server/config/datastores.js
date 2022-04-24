@@ -12,7 +12,7 @@
  * For more information on configuring datastores, check out:
  * https://sailsjs.com/config/datastores
  */
-
+ const amqp = require("amqplib")
 module.exports.datastores = {
 
 
@@ -67,6 +67,5 @@ module.exports.datastores = {
   //  },
 
   
-   
 
 };
