@@ -9,7 +9,7 @@
 
 module.exports = {
 tableName:'users',
-conection:' default',
+conection:' postGres',
   attributes: {
  
     name:{

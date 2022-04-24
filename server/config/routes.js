@@ -9,11 +9,11 @@
  */
 
 module.exports.routes = {
-    'get /':'UserController.test',
+    
 'get /api/users':'UserController.getUsers',
 'post /api/users':'UserController.createUer',
 'get /api/users/:id':'UserController.getUser',
 'put /api/users/:id':'UserController.updateUser',
 'delete /api/users/:id':'UserController.deleteUser',
-'get /socket/user':'UserController.testSocket',
+
 };

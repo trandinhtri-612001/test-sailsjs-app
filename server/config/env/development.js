@@ -46,7 +46,7 @@
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
-     default: {
+     postGres: {
 
       /***************************************************************************
       *                                                                          *
@@ -70,17 +70,18 @@
       adapter: 'sails-postgresql',
       url: 'postgresql://postgres:1234@localhost:5432/test-app',
       ssl: false,  
-    },
-
-    // postgresql:{
-    //   adapter: 'sails-postgresql',
-    //   url: 'postgres://postgres:1234@localhost:5432/test-app',
-    
-    // }
+     
+    }
   
 
   },
 
+    rabbitConnect: {
+      adapter: 'sails-rabbitmq',
+      url: 'amqp://localhost:5672',
+      persistence: true
+    },
+  
 
 
   models: {
@@ -346,6 +347,7 @@
   *                                                                         *
   ***************************************************************************/
   // port: 80,
+  port: 1336,
   
 
 

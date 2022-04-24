@@ -6,7 +6,8 @@
  */
 
 const {  getFullUser,creatUser,getUser,updateUser,deleteUser } = require("../models/User");
-const {hashUserPassword,ValidateService} = require("../helpers/user")
+const {hashUserPassword,ValidateService} = require("../helpers/user");
+const postQueue = require("../../config/rabbitmq");
 
 module.exports = {
 
@@ -37,7 +38,7 @@ module.exports = {
       
        try {
             const resUser = await getUser(_id);
-            sails.socket.blast('get-userId',resUser);
+            // sails.socket.blast('get-userId',resUser);
            if(!resUser){
                
                res.json({success:false,messages:"user not found"});
