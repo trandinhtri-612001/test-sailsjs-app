@@ -9,3 +9,7 @@ Content-Type:application/json
     "queueName":"page-service",
     "data":"hi it word"
 }
+
+###
+
+delete {{Host}}/cart-service
