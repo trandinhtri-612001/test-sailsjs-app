@@ -19,8 +19,6 @@ conection:' default',
      },
     age:{ 
       type: 'number',
-      
-      
        },
     address:{
       type:'string'

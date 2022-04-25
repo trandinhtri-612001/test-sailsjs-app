@@ -7,19 +7,35 @@
 
 module.exports = {
 
-primaryKey:'id',
- 
+
+conection:'mongoDb',
   attributes: {
-    id: { type: 'number',
-     autoIncrement: true,
-     
+    title: {
+      type: 'string',
+      required: true
     },
+    content: {
+      type: 'string',
+      required: true
+    }
+  },
+
+
+
+  createQueue:async(data)=>{
+    console.log(data)
+     await Messages.create(data).exec(function(err, resQueue) {
+      if (err) {
+        console.log(err)
+          return res.serverError(err);
+      }
+      console.log(resQueue)
+  return resQueue;
+     })
     
-    title: 'string',
-    body: 'string',
-   createdAt: { type: 'number', autoCreatedAt: true },
-    updatedAt: { type: 'number', autoUpdatedAt: true },
-  }
+    
+  },
+
 
 };
 

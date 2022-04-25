@@ -61,19 +61,36 @@ module.exports = {
      try {
          const channel = await connection.createChannel();
          await channel.assertQueue(queue);
-         channel.sendToQueue(queue, Buffer.from(data), { persistent: true }, function (err, ok) {
-              if(err){
-                return false;
-              }
+         console.log(queue + data)
+         channel.sendToQueue(queue, Buffer.from(data));
               console.log("Waiting for messages...");
               return true;
-         })
-        
      } catch (error) {
          console.error(error)
      }
       
-    }
+    },
+    popQueue:async(queue)=>{
+      const connection = await amqp.connect(amqpServer)
+      const channel = await connection.createChannel();
+      if(!channel){
+        console.log("connect rabbitmq do not success")
+      }
+      try {
+        let reverse;
+        const channel = await connection.createChannel();
+        await channel.assertQueue(queue);
+         await channel.consume(queue,(msg)=>{
+          reverse = msg.content.toString();
+          console.log(`messages reverse: ${msg.content}`);
+         
+        })
+        console.log(reverse.toString());
+        return reverse;
+      } catch (error) {
+        console.error(error)
+      }
+    },
     
     
     

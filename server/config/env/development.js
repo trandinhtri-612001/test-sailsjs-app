@@ -70,9 +70,16 @@
       adapter: 'sails-postgresql',
       url: 'postgresql://postgres:1234@localhost:5432/test-app',
       ssl: false,  
+    
      
-    }
-  
+    },
+  mongoDb: {
+    // adapter: 'sails-mongo',
+    // url: 'mongodb://user:1234@localhost:27017/rabbitmq-test',
+    adapter: 'sails-mongo',
+    url: 'mongodb+srv://user:1234@cluster0.i3ffa.mongodb.net/rabbitmq-test?retryWrites=true&w=majority'
+    },
+
 
   },
 

@@ -2,14 +2,30 @@
 @Host =  http://localhost:1336/api/queue
 
 ###
-post {{Host}}
+post {{Host}}/addFull
 Content-Type:application/json
 
 {
-    "queueName":"page-service",
-    "data":"hi it word"
+    "title":"user-service",
+    "content":"hi it word"
 }
 
 ###
 
-delete {{Host}}/cart-service
+delete {{Host}}/user-service
+
+###
+post {{Host}}
+Content-Type:application/json
+
+{
+    "title":"buck-service",
+    "content":"hello this it my word"
+}
+
+###
+post {{Host}}/user-service
+
+
+###
+post {{Host}}/pop/buck-service

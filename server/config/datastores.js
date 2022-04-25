@@ -12,7 +12,7 @@
  * For more information on configuring datastores, check out:
  * https://sailsjs.com/config/datastores
  */
- const amqp = require("amqplib")
+ 
 module.exports.datastores = {
 
 
@@ -57,7 +57,7 @@ module.exports.datastores = {
     // ssl: false
     
   },
-
+  
   // postgresql:{
   //   adapter: 'sails-postgresql',
   //   url: 'postgres://postgres:root@localhost:5432/test-app',
