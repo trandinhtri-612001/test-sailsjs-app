@@ -6,8 +6,9 @@
  */
 
 const {  getFullUser,creatUser,getUser,updateUser,deleteUser } = require("../models/User");
-const {hashUserPassword,ValidateService} = require("../helpers/user");
-const postQueue = require("../../config/rabbitmq");
+const {ValidateService} = require("../helpers/user");
+
+
 
 module.exports = {
 
@@ -121,21 +122,8 @@ if(!resUer){
         return res.json({success:false,messages:"internal server error"});
     }
   },
-   
-//   testSocket: (req,res)=>{
-   
-//       if(!req.isSocket){
-//           return res.json({success:false, messages:"it not socket request"});
 
-//       }
-//       let data ="test-success";
-
-//       sails.socket.blast('test-socket',data)
-
-//       return res.json({id:sails.socket.getId(req),hello:"this it socket request"});
-
-//   },
-
+  
 
 
 };

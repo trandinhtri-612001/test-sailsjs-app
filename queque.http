@@ -1,0 +1,11 @@
+
+@Host =  http://localhost:1336/api/queue
+
+###
+post {{Host}}
+Content-Type:application/json
+
+{
+    "queueName":"page-service",
+    "data":"hi it word"
+}

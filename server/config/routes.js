@@ -15,5 +15,7 @@ module.exports.routes = {
 'get /api/users/:id':'UserController.getUser',
 'put /api/users/:id':'UserController.updateUser',
 'delete /api/users/:id':'UserController.deleteUser',
+'post /api/queue':'MessagesController.postQueue',
+'delete /api/queue/:queueName':'MessagesController.deleteQueue',
 
 };
