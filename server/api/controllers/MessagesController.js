@@ -27,7 +27,7 @@ module.exports = {
              
         //     return res.json({success:true,messages:"create new queue do not success"});
         //  }
-         return res.json({success:true,messages:"create new queue successFully"});
+         return res.json({success:true,messages:"create new queue successFully",resData});
         
         
         } catch (error) {
@@ -121,7 +121,7 @@ module.exports = {
                 return res.json({success:false,messages:"internal server error"});
             }
           },
-          
+
           test:async(req,res)=>{
              const { title,content} = req.body;
              try {
@@ -144,7 +144,7 @@ module.exports = {
           get:async(req,res)=>{
               try {
                   const resp = await getFullUser();
-                  return res.json({success:false,messages:"internal server error",resp});
+                  return res.json({success:true,messages:"get messages success",resp});
               } catch (error) {
                 return res.json({success:false,messages:"internal server error"});
               }
