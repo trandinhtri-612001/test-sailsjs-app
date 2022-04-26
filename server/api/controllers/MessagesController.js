@@ -6,7 +6,7 @@
  */
  const {postQueue,deleteQueue,popQueue} = require("../helpers/rabbitMq");
 const Messages = require("../models/Messages");
- const {createQueue,getFullUser} = require("../models/Messages")
+ const {createQueue,getFull} = require("../models/Messages")
 module.exports = {
 
     // //controllers create queue to rabbitmq and add queue to mongodb;
@@ -143,7 +143,7 @@ module.exports = {
           },
           get:async(req,res)=>{
               try {
-                  const resp = await getFullUser();
+                  const resp = await getFull();
                   return res.json({success:true,messages:"get messages success",resp});
               } catch (error) {
                 return res.json({success:false,messages:"internal server error"});

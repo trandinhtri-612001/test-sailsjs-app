@@ -35,7 +35,7 @@ conection:'mongoDb',
     
     
   },
-  getFullUser: async ()=>{
+  getFull: async ()=>{
     const resp = await Messages.find();
    return resp;
   },
