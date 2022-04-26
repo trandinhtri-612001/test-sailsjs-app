@@ -7,7 +7,7 @@
 
 module.exports = {
 
-
+ 
 conection:'mongoDb',
   attributes: {
     title: {
@@ -26,14 +26,18 @@ conection:'mongoDb',
     console.log(data)
      await Messages.create(data).exec(function(err, resQueue) {
       if (err) {
-        console.log(err)
+        console.log("29"+err)
           return res.serverError(err);
       }
-      console.log(resQueue)
+      console.log("32"+resQueue)
   return resQueue;
      })
     
     
+  },
+  getFullUser: async ()=>{
+    const resp = await Messages.find();
+   return resp;
   },
 
 

@@ -38,7 +38,7 @@ module.exports = {
      await channel.assertQueue(queue);
     await channel.deleteQueue(queue,(err,ok)=>{
      if(err){
-         console.log("can not delete   queue")
+         console.log("can not delete  queue")
          return false;
      }
 

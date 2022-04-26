@@ -25,4 +25,8 @@ module.exports.routes = {
 'post /api/queue/:queueName':'MessagesController.popQueueController',
 //pop queue
 'post /api/queue/pop/:queueName':'MessagesController.popQueue',
+
+///test api
+'post /api/test':'MessagesController.test',
+'get /api/test':'MessagesController.get',
 };

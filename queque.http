@@ -11,7 +11,17 @@ Content-Type:application/json
 }
 
 ###
+post http://localhost:1336/api/test
+Content-Type:application/json
 
+{
+    "title":"user-service",
+    "content":"hi it word"
+}
+
+###
+get http://localhost:1336/api/test
+###
 delete {{Host}}/user-service
 
 ###
@@ -29,3 +39,6 @@ post {{Host}}/user-service
 
 ###
 post {{Host}}/pop/buck-service
+
+
+
