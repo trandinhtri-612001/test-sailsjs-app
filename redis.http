@@ -7,30 +7,17 @@
 post {{Host}}
 Content-Type: application/json;
 
-{"key":"order",
-    "value":[
-        {
-            "name":"t-shirt",
-            "qty":3,
-            "size":"xl",
-            "color":"red"
-        },
-         {
-            "name":"t-shirt",
-            "qty":6,
-            "size":"l",
-            "color":"green"
-        }
-    ]
+{"key":"sendEmail",
+ "value":"messages on"
 }
 
 ###
 ###
 post {{Host}}
-Content-Type: application/json;
+Content-Type: application/json
 
 {"name":"payment",
-   "item":false
+   "item":"it pament"
 }
 ###
 get {{Host}}/payment
