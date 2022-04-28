@@ -29,4 +29,13 @@ module.exports.routes = {
 ///test api
 'post /api/test':'MessagesController.test',
 'get /api/test':'MessagesController.get',
+
+//redis 
+//--- create messages redis
+'post /api/redis':'RedisController.createMessages',
+//--- get messages redis
+'get /api/redis/:key':'RedisController.getMessages',
+//---update messages redis
+'put /api/redis':'RedisController.updateMessages',
+
 };

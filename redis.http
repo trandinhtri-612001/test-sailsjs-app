@@ -1,0 +1,46 @@
+
+
+@Host =  http://localhost:1336/api/redis
+
+
+###
+post {{Host}}
+Content-Type: application/json;
+
+{"key":"order",
+    "value":[
+        {
+            "name":"t-shirt",
+            "qty":3,
+            "size":"xl",
+            "color":"red"
+        },
+         {
+            "name":"t-shirt",
+            "qty":6,
+            "size":"l",
+            "color":"green"
+        }
+    ]
+}
+
+###
+###
+post {{Host}}
+Content-Type: application/json;
+
+{"name":"payment",
+   "item":false
+}
+###
+get {{Host}}/payment
+
+###
+put {{Host}}
+Content-Type: application/json
+
+{
+   "key":"payment",
+   "value":"was it pament"
+
+}
